@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+      integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='style.css') }}"
+    />
+    <title>test</title>
+  </head>
+  <body>
+    <form method="post" id="form" autocomplete="off">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <label for="user-input">Write some text</label>
+      <textarea id="input" name="user-input" rows="6" cols="40"></textarea>
+      <label for="fonts">Choose a font</label>
+      <select name="fonts" id="fonts">
+        <option value="3d_diagonal">3d_diagonal</option>
+        <option value="3-d">3-d</option>
+        <option value="acrobatic">acrobatic</option>
+        <option value="avatar">avatar</option>
+        <option value="bell">bell</option>
+        <option value="dietcola">dietcola</option>
+      </select>
+      <!-- <input type="submit" id="submit" name="submit"> -->
+    </form>
+    <section id="art-section"><pre id="art"></pre></section>
+
+    <script
+      src="{{ url_for('static',filename='script.js') }}"
+      type="text/javascript"
+    ></script>
+  </body>
+</html>
