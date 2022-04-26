@@ -22,11 +22,14 @@
       crossorigin="anonymous"
     ></script>
 
-    <link
+    <!-- <link
       rel="stylesheet"
       type="text/css"
-      href="{{ url_for('static',filename='style.css') }}"
-    />
+      href="{{ url_for('static',filename='css/style.css') }}"
+    /> -->
+
+    {% assets "scss_all" %} <link rel=stylesheet type=text/css href="{{
+    ASSET_URL }}"> {% endassets %}
     <title>test</title>
   </head>
   <body>
@@ -34,10 +37,18 @@
       <div class="col">
         <form method="post" id="form">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-          <label for="user-input">Write something</label>
-          <textarea id="input" name="user-input" rows="6" cols="40"></textarea>
-          <label for="fonts">Choose a font</label>
-          <select name="fonts" id="fonts">
+          <label class="form-label mt-5" for="user-input"
+            >Write something</label
+          >
+          <textarea
+            class="form-control"
+            id="input"
+            name="user-input"
+            rows="6"
+            cols="40"
+          ></textarea>
+          <label class="form-label mt-5" for="fonts">Choose a font</label>
+          <select class="form-select form-select-sm" name="fonts" id="fonts">
             <option value="1943">1943</option>
             <option value="3-d">3-d</option>
             <option value="3d_diagonal">3d_diagonal</option>
@@ -55,7 +66,7 @@
     </section>
 
     <script
-      src="{{ url_for('static',filename='script.js') }}"
+      src="{{ url_for('static',filename='js/script.js') }}"
       type="text/javascript"
     ></script>
   </body>
