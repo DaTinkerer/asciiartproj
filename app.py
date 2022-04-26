@@ -7,6 +7,7 @@ from flask_wtf.csrf import CSRFProtect
 from decouple import config
 app = Flask(__name__)
 app.secret_key = config('SECRET_KEY')
+WTF_CSRF_TIME_LIMIT = None
 csrf = CSRFProtect(app)
 CORS(app)
 
@@ -15,8 +16,6 @@ CORS(app)
 def index():
 
     if request.method == 'POST':
-        # form = request.form
-        # art = make_art(form)
         content = request.get_json()
         font = content['font']
 
@@ -25,5 +24,6 @@ def index():
         return {
             'art': art
         }
+    
 
     return render_template('index.html')
