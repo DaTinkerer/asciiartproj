@@ -1,7 +1,7 @@
 const form = document.querySelector("#form");
 const input = document.querySelector("#input");
 const fonts = document.querySelector("#fonts");
-
+const art = document.querySelector("#art")
 let debounce = (cb, delay = 1000) => {
   let timeout;
   return (...args) => {
@@ -29,7 +29,11 @@ let sendInput = debounce(() => {
     .catch((err) => {
       console.log(err);
     });
-}, 500);
+}, 300);
 
+let copyArt = () => {
+  navigator.clipboard.writeText(art.textContent);
+} 
 input.addEventListener("input", sendInput, true);
 fonts.addEventListener("change", sendInput, true);
+art.addEventListener("click", copyArt)
