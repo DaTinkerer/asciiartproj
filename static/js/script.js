@@ -33,14 +33,11 @@ let sendInput = debounce(() => {
 
 let copyArt = () => {
   navigator.clipboard.writeText(art.textContent);
-  copyBtn.textContent = "Copied!"
-  copyBtn.className = "btn btn-success"
+  copyBtn.textContent = "Copied!";
   setTimeout(() => {
-    copyBtn.textContent = "Copy Art"
-    copyBtn.className = "btn btn-dark"
+    copyBtn.textContent = "Copy Art";
   }, 1500);
 };
 input.addEventListener("input", sendInput, true);
 fonts.addEventListener("change", sendInput, true);
 copyBtn.addEventListener("click", copyArt);
-

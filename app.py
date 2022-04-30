@@ -8,7 +8,6 @@ from art import text2art, font_list
 from decouple import config
 
 
-
 # configuration
 app = Flask(__name__)
 app.secret_key = config('SECRET_KEY')
@@ -34,10 +33,7 @@ def index():
         return {
             'art': art
         }
-    
+
     font_names = font_list()
-    
-    
-    
-    
+
     return render_template('index.html', fonts=font_names)
