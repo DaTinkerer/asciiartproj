@@ -1,12 +1,15 @@
 from flask import Flask
 from flask import render_template
-from art import text2art
 from flask import request
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect
-from decouple import config
 from flask_assets import Environment, Bundle
+from art import text2art, font_list
+from decouple import config
 
+
+
+# configuration
 app = Flask(__name__)
 app.secret_key = config('SECRET_KEY')
 app.config['WTF_CSRF_TIME_LIMIT'] = 604800
@@ -31,11 +34,10 @@ def index():
         return {
             'art': art
         }
-
-    return render_template('index.html')
-
-
-
-
-
-  
+    
+    font_names = font_list()
+    
+    
+    
+    
+    return render_template('index.html', fonts=font_names)

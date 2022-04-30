@@ -32,50 +32,37 @@
     ASSET_URL }}"> {% endassets %}
     <title>test</title>
   </head>
-  <body>
+  <body onload="sendInput()">
     <section class="container">
-      <div class="col">
-        <form method="post" id="form">
-          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-          <label class="form-label mt-5" for="user-input"
-            >Write something</label
-          >
-          <textarea
-            class="form-control"
-            id="input"
-            name="user-input"
-            rows="6"
-            cols="40"
-          ></textarea>
-          <label class="form-label mt-5" for="fonts">Choose a font</label>
-          <select class="form-select form-select-sm" name="fonts" id="fonts">
-            <option value="1943">1943</option>
-            <option value="3-d">3-d</option>
-            <option value="3d_diagonal">3d_diagonal</option>
-            <option value="4x4_offr">4x4_offr</option>
-            <option value="5lineobliquel">5lineoblique</option>
-            <option value="acrobatic">acrobatic</option>
-            <option value="a_zooloo">a_zooloo</option>
-            <option value="alligator1">alligator1</option>
-            <option value="alligator2">alligator2</option>
-            <option value="alligator3">alligator3</option>
-            <option value="alphabet">alphabet</option>
-            <option value="amcaaa01">amcaaa01</option>
-            <option value="amcneko">amcneko</option>
-            <option value="amcrazo2">amcrazo2</option>
-            <option value="amcun1">amcun1</option>
-            <option value="arrows">arrows</option>
-            <option value="ascii_new_roman">ascii_new_roman</option>
-            <option value="avatar">avatar</option>
-            <option value="barbwire">barbwire</option>
-            <option value="bell">bell</option>
-            <option value="dietcola">dietcola</option>
-          </select>
+      <form method="post" id="form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <label class="form-label mt-5" for="user-input">Write something</label>
+        <textarea
+          class="form-control"
+          id="input"
+          name="user-input"
+          rows="6"
+          cols="40"
+        ></textarea>
+        <label class="form-label mt-5" for="fonts">Choose a font</label>
+        <div class="row">
+          <div class="col">
+            <select class="form-select form-select-sm" name="fonts" id="fonts">
+              {% for font in fonts %}
+              <option value="{{ font }}">{{ font }}</option>
+              {% endfor %}
+            </select>
+          </div>
           <!-- <input type="submit" id="submit" name="submit"> -->
-        </form>
+          <div class="col">
+            <button type="button" id="copy-btn" class="btn btn-dark">
+              Copy Art
+            </button>
+          </div>
+        </div>
+      </form>
 
-        <section class="mt-5" id="art-section"><pre id="art"></pre></section>
-      </div>
+      <section class="mt-5" id="art-section"><pre id="art"></pre></section>
     </section>
 
     <script

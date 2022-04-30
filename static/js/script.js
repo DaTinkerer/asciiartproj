@@ -1,7 +1,7 @@
-const form = document.querySelector("#form");
 const input = document.querySelector("#input");
 const fonts = document.querySelector("#fonts");
-const art = document.querySelector("#art")
+const art = document.querySelector("#art");
+const copyBtn = document.querySelector("#copy-btn");
 let debounce = (cb, delay = 1000) => {
   let timeout;
   return (...args) => {
@@ -33,7 +33,14 @@ let sendInput = debounce(() => {
 
 let copyArt = () => {
   navigator.clipboard.writeText(art.textContent);
-} 
+  copyBtn.textContent = "Copied!"
+  copyBtn.className = "btn btn-success"
+  setTimeout(() => {
+    copyBtn.textContent = "Copy Art"
+    copyBtn.className = "btn btn-dark"
+  }, 1500);
+};
 input.addEventListener("input", sendInput, true);
 fonts.addEventListener("change", sendInput, true);
-art.addEventListener("click", copyArt)
+copyBtn.addEventListener("click", copyArt);
+
