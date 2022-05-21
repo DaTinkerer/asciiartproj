@@ -1,14 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"); 
   body {
     font-family: "Montserrat", sans-serif;
-    background: #68749f; }
+    background: #353844; }
 
     label {
       color: #fff; }
 
       #art {
-        color: #cecece; }
+        color: #fff; }
 
         #copy-btn {
-          background-color: #88b8d3;
-          border-color: #88b8d3; }
+          background-color: #D9FFF8;
+          color: #000;
+          border-radius: 0%;
+          border-color: #D9FFF8; }
+          #copy-btn:focus {
+            box-shadow: none; }
+
+  #input {
+    border-radius: 0%; }
+    #input:focus {
+      border-color: #fff;
+      box-shadow: none; }
+
+  .form-select {
+    border-radius: 0%; }
+    .form-select:focus {
+      border-color: #fff;
+      box-shadow: none; }

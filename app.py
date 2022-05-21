@@ -4,7 +4,7 @@ from flask import request
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect
 from flask_assets import Environment, Bundle
-from art import text2art, font_list
+from art import text2art, ASCII_FONTS
 from decouple import config
 
 
@@ -15,7 +15,6 @@ app.config['WTF_CSRF_TIME_LIMIT'] = 604800
 csrf = CSRFProtect(app)
 CORS(app)
 assets = Environment(app)
-
 scss = Bundle('scss/main.scss', filters='pyscss', output='css/style.css')
 assets.register('scss_all', scss)
 
@@ -34,6 +33,11 @@ def index():
             'art': art
         }
 
-    font_names = font_list()
+    font_names = ASCII_FONTS
 
     return render_template('index.html', fonts=font_names)
+
+
+# if __name__ == '__main__':
+#     app = create_app()
+#     app.run()
