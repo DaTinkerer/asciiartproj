@@ -3,3 +3,4 @@
 /env
 /.pytest_cache
 /tests/__pycache__
+/static/.webassets-cache
